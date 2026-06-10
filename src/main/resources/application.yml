@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: library-management-api
+
+  # Tell Spring which profile to activate by default.
+  # In prod, override this with the environment variable:
+  # SPRING_PROFILES_ACTIVE=prod
+  profiles:
+    active: dev
+
+  jpa:
+    # IMPORTANT: open-in-view loads a DB session for the entire HTTP request.
+    # Setting it false enforces clean layering — the DB session closes at the
+    # service layer, not the controller layer. Spring warns you if you forget this.
+    open-in-view: false
+
+    properties:
+      hibernate:
+        # Formats SQL in logs so it's readable — multi-line, indented
+        format_sql: true
+
+# Expose only the health endpoint by default.
+# We don't need info/metrics/env exposed for this project.
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

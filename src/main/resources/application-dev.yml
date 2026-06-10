@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    # jdbc:h2:mem creates a pure in-memory DB named "librarydb"
+    # DB_CLOSE_DELAY=-1 keeps it alive for the lifetime of the JVM
+    # DB_CLOSE_ON_EXIT=FALSE prevents shutdown on connection close
+    url: jdbc:h2:mem:librarydb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+
+  # H2 ships with a browser-based SQL console.
+  # Accessible at http://localhost:8080/h2-console in dev only.
+  h2:
+    console:
+      enabled: true
+
+  jpa:
+    hibernate:
+      # create-drop: creates the schema on startup, drops it on shutdown.
+      # Perfect for dev — you always start fresh.
+      ddl-auto: create-drop
+    show-sql: true  # Prints every SQL query to the console
+
+logging:
+  level:
+    # See the actual SQL parameter values, not just ?  placeholders
+    org.hibernate.orm.jdbc.bind: trace

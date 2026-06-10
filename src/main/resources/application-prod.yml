@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # validate: Hibernate checks your entities match the existing schema.
+      # It will NOT create or alter tables — that's your DBA/migration tool's job.
+      ddl-auto: validate
+    show-sql: false  # Never log SQL in prod — it leaks schema info
+
+logging:
+  level:
+    root: warn  # Only warnings and errors in prod logs
