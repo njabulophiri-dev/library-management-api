@@ -1,4 +1,5 @@
 package com.library.author;
+import com.library.book.Book;
 
 import jakarta.persistence.*;
 
@@ -25,6 +26,9 @@ public class Author {
 
     @Column(nullable = false, length = 100)
     private String lastName;
+
+    @Column(nullable = false, unique = true, length = 150)
+    private String email;
 
     @Column(length = 100)
     private String nationality;
